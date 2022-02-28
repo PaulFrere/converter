@@ -1,36 +1,14 @@
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.IOException;
 
 public class Main {
-    private static Set<Student> studentStorage = new HashSet<>();
-    private static Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
-        Student student;
-        while(true) {
-            student = getStudent();
-            if (student == null) break;
-            studentStorage.add(student);
-        }
+        Student student = new Student();
+        student.setId(1);
+        student.setName("Sergey");
+        student.setGroup("Java 1.01");
 
-        for (Student tmpStudent : studentStorage) {
-            System.out.println(tmpStudent);
-        }
-    }
-
-    private static Student getStudent() {
-        System.out.println("\nВведите id студента");
-        final String id = scan.nextLine();
-
-        if ("end".equals(id)) return null;
-
-        System.out.println("Введите имя студента");
-        final String name = scan.nextLine();
-
-        System.out.println("Введите группу студента");
-        final String group = scan.nextLine();
-
-        return new Student(Integer.parseInt(id), name, group);
+        Converter.toJSON(student);
+        Converter.toJavaObject(student);
     }
 }

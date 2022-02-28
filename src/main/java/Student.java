@@ -1,15 +1,10 @@
 import java.util.Objects;
 
 public class Student {
+
     private int id;
     private String name;
     private String group;
-
-    public Student(int id, String name, String group) {
-        this.id = id;
-        this.name = name;
-        this.group = group;
-    }
 
     public int getId() {
         return id;
@@ -35,22 +30,8 @@ public class Student {
         this.group = group;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || !Student.class.equals(obj.getClass())) return false;
-
-        Student altStudent = (Student) obj;
-        return this.id == altStudent.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return name + " " + group + " (" + id + ")";
+    public void say() {
+        System.out.println(getId() + ", " + getName() + ", " + getGroup());
     }
 }
+
